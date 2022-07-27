@@ -1,3 +1,9 @@
+@media (max-width: 1023px){
+    .title-page{
+        font-size: 35px !important;
+      }
+}
+
 @media (max-width: 768px) {
   .video-player {
     width: 100%;
@@ -15,37 +21,39 @@
     top: 0;
     margin: auto;
   }
+
+  .title-page{
+    font-size: 25px !important;
+  }
 }
 
 
 
 * {
   font-family: dhelvetica, arial, sans-serif;
-  color: #272727;
-  
-
+  color: #ffffff;
 }
-
-
 
 #video-div{
     width: 100%;
     border: 8px solid #000000;
     border-color: black;
+    position: relative;
+    z-index: 2;
 }
 
 #esconde{
     margin-top: 20px;
 }
 
-
+#headlinediv{
+    font-size: 100px;
+}
 
 #politicasdiv{
     padding-top: 20%;
     font-size: 14px;
-
 }
-
 
 #rodape{
     padding-top: 5%;
@@ -55,24 +63,14 @@
     font-size: 12px;
     padding-left: 5%;
     padding-right: 5%;
-
 }
-
 
 .btn-img{
     padding-top: 5px;
     padding-bottom: 60px;
     width: 100%;
     margin: auto;
-
 }
-
-
-
-
-
-
-
 
 .footer_text{
     color: white;
@@ -84,24 +82,32 @@
     font-size: 18;
 }
 
-
-
-
-
-
-
-
 .gray-background{
     background-color: #f4f3f3;
 }
 
-
-
-body {
+body header{
   font-size: 16px;
-  background: url("./assets/img/fundo.png");
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #000000;
 }
 
+.title-page{
+    font-weight: bolder !important;
+    color: white;
+    font-size: 45px;
+    text-align: center;
+    line-height: 1;
+}
+
+.title-page b{
+    margin: 10px auto 0 ;
+    display: table;
+    padding: 5px;
+    background-color: #ff5535;
+}
 
 .bbtn {
   width: 100%;
@@ -175,15 +181,86 @@ body {
 
 
 
+/* box de notificação */
 
+.box-notification{
+    border-radius: 8px;
+    background-color: white;
+    padding: 13px 30px 10px 10px;
+    position: fixed;
+    bottom: -40px;
+    z-index: 999;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
 
+.box-notification.on{
+    opacity: 1;
+    bottom: 30px;
+    visibility: visible;
+}
 
+.box-notification figure{
+    margin: 0 10px 0 0   !important;
+    line-height: 0;
+}
 
+.box-notification figure img{
+    width: 50px;
+    height: 50px;
+}
 
+.text-notification p, .box-notification b{
+    color: #333;
+    line-height: .8;
+    margin-bottom: 0px !important;
+    font-size: 13px;
+    color: #808080;
+}
 
+#forma-compra{
+    color: #333;
+}
 
+#name-notification{
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
 
+.text-notification small{
+    color: #00ba00;
+    font-weight: bold;
+    font-size: 11px;
+    display: block;
+    margin-top: 2px;
+    text-align: right;
+}
 
+.text-notification small img{
+    margin-right: 2px;
+}
+
+.box-notification button{
+    appearance: none !important;
+    color: #333;
+    padding: 0;
+    line-height: 1;
+    border: 0;
+    outline: 0;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+}
 
 
 

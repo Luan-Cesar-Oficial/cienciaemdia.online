@@ -102,5 +102,44 @@ setTimeout(function() {
     $('#add-to-cart').show()
 }, 20000)
 var today = new Date()
-today.setDate(today.getFullYear() + 1)
-setCookie('returningVisitor', 'yes', today)
+today.setDate(today.getFullYear() + 1); 
+// setCookie('returningVisitor', 'yes', today);
+
+
+
+//Configuração do sistema de notificação
+const formas = ['Pix','Cartão'];
+const costumers = ['Pamela Fonseca Próxima a você', 'Pedro Vinicius De Sorocaba, SP', 'Luene Teixeira De Ouro Preto, MG', 'Gabriela De Porto Alegre, RS'];
+const displayed = [];
+const box = document.getElementsByClassName('box-notification')[0]
+//Tempo de intervalo
+const wait = 4000
+let open = true;
+
+const notification = () => {
+    let numberForma = Math.floor(Math.random() * 2);
+    let numbereCostumer = Math.floor(Math.random() * costumers.length);
+    let name = document.getElementById('name-notification');
+    let formaCompra = document.getElementById('forma-compra');
+
+    formaCompra.innerText = formas[numberForma];
+    name.innerText = costumers[numbereCostumer];
+}
+
+setInterval(() => {
+    if(open){
+        notification()
+        if(!box.classList.contains('on')){
+            box.classList.add('on')
+        }
+    }else{
+        if(box.classList.contains('on')){
+            box.classList.remove('on')
+        }
+        clearInterval()
+    }
+}, wait);
+
+function pause(){
+    open = false;
+}
