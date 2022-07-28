@@ -27,6 +27,12 @@
   }
 }
 
+@media (max-width: 480px){
+    .title-page{
+        font-size: 18px !important;
+      }
+}
+
 
 
 * {
@@ -99,6 +105,7 @@ body header{
     color: white;
     font-size: 45px;
     text-align: center;
+    white-space: nowrap;
     line-height: 1;
 }
 
@@ -109,6 +116,20 @@ body header{
     background-color: #ff5535;
 }
 
+.audio-ligado{
+    font-size: 20px;
+    display: flex;
+    margin: 20px 0 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-ligado svg{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
 .bbtn {
   width: 100%;
   max-width: 449px;
@@ -117,6 +138,11 @@ body header{
 @media (max-width: 768px) {
   .video-player {
     margin-top: 0 !important;
+  }
+
+  .audio-ligado{
+    font-size: 16px;
+    margin: 15px 0 25px;
   }
 }
 
@@ -136,9 +162,9 @@ body header{
       width: 100%; padding-left: 0!important; padding-right: 0!important; 
       margin-bottom: 10px; 
       padding: 22px 44px; border-color: #ff5535; border-width: 0px; 
-      border-radius: 6px; 
+      border-radius: 50px; 
       background: linear-gradient(to bottom, #ff6600 0%, #ff5535 100%); 
-      box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.5); 
+      box-shadow: 0 0 35px 0 rgba(255, 85, 53, 0.6); 
       text-decoration: none!important;
     }
     .span-btn {
@@ -180,6 +206,23 @@ body header{
     }
 
 
+.barra{
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    width: 100%;
+    font-size: 14px;
+    background-color: #ff5535;
+    font-weight: bolder;
+}
+
+@media (max-width: 768px){
+    .barra{
+        font-size: 12px;
+        padding: 20px 15px;
+    }
+}
+
 
 /* box de notificação */
 
@@ -204,6 +247,16 @@ body header{
     opacity: 1;
     bottom: 30px;
     visibility: visible;
+}
+
+@keyframes fade {
+    0%{
+        
+    }
+
+    100%{
+
+    }
 }
 
 .box-notification figure{

@@ -106,40 +106,82 @@ today.setDate(today.getFullYear() + 1);
 // setCookie('returningVisitor', 'yes', today);
 
 
+/* SISTEMA DE NOTIFICAÇÃO */
 
-//Configuração do sistema de notificação
+//Tempo de intervalo, 
+var pause = 4000
+
+//Tempo de espera inicial | 1000 = 1 segundo
+var wait = 6000
+//o tempo final será = pause + wait
+
+//Formas de pagamento
 const formas = ['Pix','Cartão'];
-const costumers = ['Pamela Fonseca Próxima a você', 'Pedro Vinicius De Sorocaba, SP', 'Luene Teixeira De Ouro Preto, MG', 'Gabriela De Porto Alegre, RS'];
-const displayed = [];
+
+//Lista de nomes
+const costumers = 
+    [
+        'Izabella Abreu Alcaide, RJ',
+        'Luiz Felipe Souza, MG',
+        'Alana Sales, SP',
+        'Caroline Martins, RS',
+        'Catarina Pires, BH',
+        'Maria Cecília Pereira, PR',
+        'Vicente Pereira, SP',
+        'Eduardo Rodrigues, Próximo a você',
+        'Maitê Monteiro, MG',
+        'João Guilherme Moreira, SC',
+        'Maria Sophia Gonçalves, SP',
+        'Thales Aragão, PB',
+        'Caroline Martins, CE',
+        'Ana Luiza da Costa, Próxima a você',
+        'Bianca Azevedo, DF',
+        'Enzo Ramos, AM',
+        'Calebe Dias, RJ',
+        'João Miguel da Cruz, MG',
+        'Alexia Melo, Próxima a você, AM',
+        'Samuel Vieira, CE'
+    ];
+
+
 const box = document.getElementsByClassName('box-notification')[0]
-//Tempo de intervalo
-const wait = 4000
-let open = true;
+var open = true;
 
 const notification = () => {
-    let numberForma = Math.floor(Math.random() * 2);
-    let numbereCostumer = Math.floor(Math.random() * costumers.length);
+    let numberForma = Math.floor(Math.random() * formas.length);
+    let lastCostumer = costumers.at(-1);
     let name = document.getElementById('name-notification');
     let formaCompra = document.getElementById('forma-compra');
 
-    formaCompra.innerText = formas[numberForma];
-    name.innerText = costumers[numbereCostumer];
+    if(lastCostumer !== undefined){ 
+        formaCompra.innerText = formas[numberForma];
+        name.innerText = lastCostumer;
+        costumers.pop(lastCostumer);
+    }else{
+        open = false;
+    }
 }
 
-setInterval(() => {
-    if(open){
-        notification()
-        if(!box.classList.contains('on')){
-            box.classList.add('on')
-        }
-    }else{
-        if(box.classList.contains('on')){
-            box.classList.remove('on')
-        }
-        clearInterval()
-    }
-}, wait);
 
-function pause(){
-    open = false;
+var dataLocal =  localStorage.getItem("alreadyElsDisplayed"); 
+function startNotification(){
+    setTimeout(() => {
+         if(dataLocal == null){
+            setInterval(() => {
+                if(open){
+                    notification()
+                    console.log(wait)
+                    if(!box.classList.contains('on')){
+                        box.classList.add('on')
+                    }
+                }else{
+                    if(box.classList.contains('on')){
+                        box.classList.remove('on')
+                    }
+                }
+        
+            }, pause); 
+        }
+    }, wait);
+
 }
